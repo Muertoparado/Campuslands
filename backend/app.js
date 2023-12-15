@@ -22,9 +22,9 @@ const PORT = process.env.PORT
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use("/", ofertaRoutes);
-app.use("/", campersRoutes);
-app.use("/", gruposRoutes);
+app.use("/",ofertaRoutes);
+app.use("/",campersRoutes);
+app.use("/",gruposRoutes);
 app.use("/",empresaRoutes);
 app.use("/",rutasRoutes);
 app.use("/",estadoRoutes);
