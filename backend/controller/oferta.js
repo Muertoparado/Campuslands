@@ -1,4 +1,4 @@
-import cnx from '../src/connection/connection.js'
+import con from '../src/connection/connection.js'
 
 export async function postOferta(req,res){
 
@@ -24,7 +24,7 @@ export async function postOferta(req,res){
     };
   
     const insertOfertaQuery = 'INSERT INTO oferta SET ?';
-    db.query(insertOfertaQuery, ofertaData, (err, result) => {
+    con.query(insertOfertaQuery, ofertaData, (err, result) => {
       if (err) {
         console.error('Error al insertar oferta: ' + err.message);
         return res.status(500).json({ mensaje: 'Error al publicar la oferta' });
@@ -39,7 +39,7 @@ export async function postSeleccionar(req,res){
   
     const countQuery = 'SELECT COUNT(*) as seleccion_count FROM estadoSolicitud WHERE id_camper = ?';
 
-    db.query(countQuery, [id_camper], (err, results) => {
+    con.query(countQuery, [id_camper], (err, results) => {
       if (err) {
         console.error('Error al contar selecciones: ' + err.message);
         return res.status(500).json({ mensaje: 'Error al seleccionar la oferta' });
@@ -54,7 +54,7 @@ export async function postSeleccionar(req,res){
       const insertQuery = 'INSERT INTO estadoSolicitud (id_camper, id_oferta, id_estado, observacion) VALUES (?, ?, ?, ?)';
       const values = [id_camper, id_oferta, 1, 'Selección realizada'];
   
-      db.query(insertQuery, values, (err, result) => {
+      con.query(insertQuery, values, (err, result) => {
         if (err) {
           console.error('Error al insertar selección: ' + err.message);
           return res.status(500).json({ mensaje: 'Error al seleccionar la oferta' });

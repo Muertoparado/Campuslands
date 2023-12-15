@@ -10,6 +10,8 @@ import empresaRoutes from './src/routes/empresaRoute.js'
 import rutasRoutes from './src/routes/rutaRoute.js'
 import estadoRoutes from './src/routes/estadoRoute.js'
 import estadoSoliRoutes from './src/routes/estSolicitudRoute.js'
+import morgan from 'morgan';
+
 
 console.clear();
 dotenv.config();
@@ -18,7 +20,7 @@ const app = express();
 const PORT = process.env.PORT 
 
 app.use(express.json());
-
+app.use(morgan('dev'));
 
 app.use("/", ofertaRoutes);
 app.use("/", campersRoutes);
@@ -34,4 +36,4 @@ const main = () => {
     });
   };
 
-  
+  main();

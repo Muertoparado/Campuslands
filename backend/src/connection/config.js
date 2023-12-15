@@ -4,6 +4,6 @@ dotenv.config();
 export default {
     host : process.env.HOST,
     database : process.env.DATABASE,
-    user : 'sputnik',
+    user : 'campus',
     password : process.env.PASSWORD
 } 
